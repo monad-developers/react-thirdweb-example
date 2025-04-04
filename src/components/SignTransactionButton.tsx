@@ -2,9 +2,8 @@
 import { useActiveAccount } from "thirdweb/react";
 
 // Utils
+import { toUnits } from "thirdweb";
 import { monadTestnet } from "../utils/chain";
-import { signTransaction } from "thirdweb";
-
 
 export default function SignTransactionButton() {
 
@@ -22,10 +21,21 @@ export default function SignTransactionButton() {
             console.log("Signing transaction!");
             
             // This fails! (https://embedded-wallet.thirdweb.com/api/v1/enclave-wallet/sign-transaction 400 (Bad Request))
+            // You need to pass `gas` and `gasPrice` even though the SDK doesn't complain when you don't pass them.
+            //
+            // const signature = await account.signTransaction!({
+            //     chainId: monadTestnet.id,
+            //     to: account.address,
+            // })
+
+            // This works!
             const signature = await account.signTransaction!({
                 chainId: monadTestnet.id,
                 to: account.address,
+                gas: BigInt(21000),
+                gasPrice: toUnits("70", 9)
             })
+
             console.log(`Signed transaction: ${signature}`)
             console.log(`Processed transaction in ${Date.now() - startTime} ms`);
         
