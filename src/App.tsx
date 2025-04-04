@@ -3,6 +3,7 @@ import SignMessageButton from './components/SignMessage'
 import SignTransactionButton from './components/SignTransactionButton'
 import SendTransactionButton from './components/SendTransactionButton'
 import BatchSignTransactionButton from './components/BatchSignTransaction'
+import BatchSendTransactionButton from './components/BatchSendTransaction'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <SignTransactionButton />
       <SendTransactionButton />
       <BatchSignTransactionButton />
+      <BatchSendTransactionButton />
     </>
   )
 }
