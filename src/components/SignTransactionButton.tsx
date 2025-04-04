@@ -33,7 +33,7 @@ export default function SignTransactionButton() {
                 chainId: monadTestnet.id,
                 to: account.address,
                 gas: BigInt(21000),
-                gasPrice: toUnits("70", 9)
+                gasPrice: toUnits("52", 9)
             })
 
             console.log(`Signed transaction: ${signature}`)
